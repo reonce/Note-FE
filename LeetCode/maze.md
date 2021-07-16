@@ -1,3 +1,4 @@
+迷宫题
 ```
 function create(m, n) {
   //初始化一个maze数组
