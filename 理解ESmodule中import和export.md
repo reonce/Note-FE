@@ -2,7 +2,7 @@
 
 前端工程，在最早的时候是没有模块的概念的。随着前端工程的发展，前端开发也越来越规范化，更像是软件工程了。那么随之而来的，为了解决工程化的问题，就引入了模块的概念。但是在早期，因为ecmascript原本是没有模块语法的，所以采用的都是社区的各种版本协议，其中影响最深的，就是nodejs使用的[CommonJS规范](https://link.zhihu.com/?target=http%3A//www.commonjs.org/) 。
 
-当模块化的概念越来越重要的时候，在es6中，引入了模块的语法：import ，下面我们简单了解一下，import是怎么使用的。一下内容，参考 [官方文档](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import)
+当模块化的概念越来越重要的时候，在es6中，引入了模块的语法：import。 参考 [官方文档](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import)
 
 ### 1、export
 
