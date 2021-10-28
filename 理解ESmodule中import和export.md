@@ -41,7 +41,7 @@ console.log(m1)
 
 在这个文件中，我们对外暴露了 一个函数，一个变量，一个对象。所以，在使用 import 导入的文件对象，就不在是一个空对象，而是包含了export 内容的对象，所以，我们打印出`m1.js` 文件对象，也就是 `m1` ：
 
-![img](https://pic1.zhimg.com/80/v2-4ec4569a4ed3b7905b85333a18a5e6e4_720w.jpg)
+![image-20211028143553854](C:\Users\newrank\AppData\Roaming\Typora\typora-user-images\image-20211028143553854.png)
 
 
 所以，我们知道，export 导出的内容，都会添加到文件对象中，可以简单的先理解为深拷贝。
@@ -71,7 +71,7 @@ export default{
 
 main.js不变，在执行一遍，继续查看打印出来的文件对象：
 
-![img](https://pic3.zhimg.com/80/v2-20c5f36e520fe778d156ed6c8879e686_720w.jpg)
+![image-20211028143529900](C:\Users\newrank\AppData\Roaming\Typora\typora-user-images\image-20211028143529900.png)
 
 
 发现了吗，export default 的作用，是给文件对象，添加一个 default属性，default属性的值也是一个对象，且和export default导出的内容完全一致。
@@ -101,7 +101,7 @@ console.log(m1)
 
 示例中的`m1` 命名空间对象，可以访问到文件对象的所有对外接口，包括export，和export default。
 
-![img](https://pic3.zhimg.com/80/v2-20c5f36e520fe778d156ed6c8879e686_720w.jpg)
+![image-20211028143607519](C:\Users\newrank\AppData\Roaming\Typora\typora-user-images\image-20211028143607519.png)
 
 
 
@@ -120,7 +120,7 @@ console.log(b)
 
 打印结果，就是：
 
-![img](https://pic4.zhimg.com/80/v2-ef416929e128ca558ef7e8eed7abb23f_720w.jpg)
+![image-20211028143619134](C:\Users\newrank\AppData\Roaming\Typora\typora-user-images\image-20211028143619134.png)
 
 
 但是这种方式，仅限于获取文件对象的正常属性，default属性是获取不到的，原因有两个：
