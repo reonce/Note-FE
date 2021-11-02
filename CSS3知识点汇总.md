@@ -274,3 +274,15 @@ animation: name duration timing-function delay iteration-count direction;
 	/* 换行后的默认值 */
 	align-content: stretch;
 ```
+
+## Ohters
+
+```
+☞ 在元素间隔中添加'、'
+1. :not(:last-child)表示除最后一个伪类元素外的所有元素
+
+&:not(:last-child)::after {
+  content: '、';
+ }
+```
+
