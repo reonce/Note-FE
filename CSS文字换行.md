@@ -68,3 +68,6 @@ white-space用于处理文字中的空白。会让文字**不自动换行，全�
 
 　　　　　　　　*![img](https://images2015.cnblogs.com/blog/666306/201508/666306-20150829135244609-1697680237.png)*
 
+
+
+题外： user-select: none;  // 文字不可选中
