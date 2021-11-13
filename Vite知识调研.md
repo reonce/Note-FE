@@ -13,16 +13,34 @@
 
 **1. Vite和WebPack的区别，各有哪些优点和不足**
 
-现在前端主流的打包工具主要以 Webpack 为代表，但随着项目规模的发展，构建方面的痛点越来越突出，最大的感受就是**太慢了**，一方面项目冷启动时必须递归打包整个项目的依赖树，另一方面 JavaScript 语言本身(解释执行、单线程执行)的限制，导致构建性能遇到瓶颈。
+  现在前端主流的打包工具主要以 Webpack 为代表，但随着项目规模的发展，构建方面的痛点越来越突出，最大的感受就是**太慢了**，一方面项目冷启动时必须递归打包整个项目的依赖树，另一方面 JavaScript 语言本身(解释执行、单线程执行)的限制，导致构建性能遇到瓶颈。
 
-在这样的背景下，一些被称为 Bundleless (或者 Unbundled) 的构建工具应运而生，诸如 Snowpack、Vite，其中 Vite 最近在社区的呼声越来越高，GitHub 上的 star 30k+，甚至已经超过 vue3 仓库的 star 数(目前 24.1k)，可见其影响力之大。
+  这时候，基于ES module的 Vite应运而生，由尤雨溪(以下简称尤师)带队开发。
+
+**区别**
+
+  `webpack`构建项目会先**打包**，之后启动本地开发服务器，采用**全部加载**的方案，请求模块时加载模块相应的打包结果。
+
+   `vite`启动项目则选择的不打包的方案，在浏览器请求某个模块时，根据模块进行编译，实现**按需动态编译**。
+
+从而可以跳过打包过程中的分析模块依赖、编译等操作。当然，不是随便就可以跳过打包的，后文会提到一些关于vite跳过打包要处理的问题。
+
+​	**webpack**作为老牌霸主，把工作放在了服务器上，全部编译打包，经过多年的优化，已经十分稳定。缺陷主要是提到的速度慢。
+
+  **vite**是一颗备受瞩目的新星，你可能并没有开始使用或研究它，但你一定耳闻过它。最大的优势是速度快。项目复杂度越大，vite的优势就越明显。它甚至可以比webpack快十倍百倍...  它目前的缺点有：
+
+1. 浏览器兼容性。只能使用在现代浏览器上（支持es2015+）
+2. 打包兼容性不稳定。对于CommonJs的模块不完全兼容
+3. 开发服务器和产品构建之间的最佳输出和行为存在不一致的情况
+4. 生态不及webpack，插件等不够丰富
+5. 生产环境下，ESbuild构建对于css的代码分割不够友好
 
 |         |                         **打包过程**                         |                             原理                             |
 | ------- | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | webpack | 识别入口->逐层识别依赖->分析/转换/编译/输出代码->打包后的代码 | 逐级递归识别依赖，构建依赖图谱->转化AST语法树->处理代码->转换为浏览器可识别的代码 |
-| vite    |                              -                               | 基于浏览器原生 ES module，利用浏览器解析 imports，服务器端按需编译返回 |
+| vite    |                              -                               | 基于浏览器原生支持的 ES module，利用浏览器解析 imports，服务器端按需编译返回 |
 
-
+参考
 
 https://blog.51cto.com/xuedingmaojun/2967713
 
@@ -30,9 +48,7 @@ https://juejin.cn/post/7005731645911203877
 
 **3. Vite打包为什么可以那么“快”**
 
-​	Vite引以为傲的是开发环境不打包
-
-Vite 则别出心裁的利用了[浏览器的原生 ES Module 支持](https://link.juejin.cn?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FJavaScript%2FGuide%2FModules)，直接在 html 文件里写诸如这样的代码：
+Vite引以为傲的是开发环境不打包，尤师利用了[浏览器的原生 ES Module 支持](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)，直接在 html 文件里写诸如这样的代码：
 
 ```html
 // index.html
@@ -40,17 +56,14 @@ Vite 则别出心裁的利用了[浏览器的原生 ES Module 支持](https://li
 <script type="module">
   import { createApp } from 'vue'
   import Main from './Main.vue'
-
   createApp(Main).mount('#app')
 </script>
 复制代码
 ```
 
-Vite 会在本地帮你启动一个服务器，当浏览器读取到这个 html 文件之后，会在执行到 import 的时候才去向服务端发送 `Main.vue` 模块的请求，Vite 此时在利用内部的一系列黑魔法，包括 Vue 的 template 解析，代码的编译等等，解析成浏览器可以执行的 js 文件返回到浏览器端。
+ Vite 会在本地帮你启动一个服务器，当浏览器读取到这个 html 文件之后，会在执行到 import 的时候才去向服务端发送模块的请求，解析成浏览器可以执行的 js 文件返回到浏览器端。也就是说只有在真正使用到这个模块的时，浏览器才会请求并且解析这个模块，最大程度的做到了**按需加载**。
 
-这就保证了只有在真正使用到这个模块的时候，浏览器才会请求并且解析这个模块，最大程度的做到了按需加载。
-
-用 Vite 官网上的图来解释，传统的 bundle 模式是这样的：
+引用Vite 官网上的图，传统的 bundle 模式是这样的：
 
 ![传统 bundle](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e1c187722cd9405687c6c0ff40b54b9b~tplv-k3u1fbpfcp-watermark.awebp)
 
@@ -58,13 +71,13 @@ Vite 会在本地帮你启动一个服务器，当浏览器读取到这个 html 
 
 ![基于 ESM](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af2907c55cdb4fedadf8e604907ddc57~tplv-k3u1fbpfcp-watermark.awebp)
 
-灰色部分是暂时没有用到的路由，甚至完全不会参与构建过程，随着项目里的路由越来越多，构建速度也不会变慢。
+灰色部分是暂时没有用到的路由，甚至完全不会参与构建过程，即使项目中的路由增加，构建速度也不会变慢。
 
 ## 依赖预编译
 
-依赖预编译，其实是 Vite 2.0 在为用户启动开发服务器之前，先用 `esbuild` 把检测到的依赖预先构建了一遍。
+[依赖预编译原因](https://vitejs.cn/guide/dep-pre-bundling.html)，其实是 Vite 2.0 在为用户启动开发服务器之前，先用 `esbuild` 把检测到的依赖预先构建了一遍。依赖预编译原因   
 
-也许你会疑惑，不是一直说好的 no-bundle 吗，怎么还是走启动时编译这条路线了？尤老师这么做当然是有理由的，我们先以导入 `lodash-es` 这个包为例。
+也许你会疑惑，不是一直说好的 no-bundle 吗，怎么还是走启动时编译这条路线了？尤师这么做当然是有理由的，我们先以导入 `lodash-es` 这个包为例。
 
 当你用 `import { debounce } from 'lodash'` 导入一个命名函数的时候，可能你理想中的场景就是浏览器去下载只包含这个函数的文件。但其实没那么理想，`debounce` 函数的模块内部又依赖了很多其他函数，形成了一个依赖图。
 
@@ -72,13 +85,11 @@ Vite 会在本地帮你启动一个服务器，当浏览器读取到这个 html 
 
 ![lodash 请求依赖链路](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d9273fbf819c430ea0a44677c789cf6b~tplv-k3u1fbpfcp-watermark.awebp)
 
-这当然是不可接受的，于是尤老师想了个折中的办法，正好利用 [Esbuild](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fevanw%2Fesbuild) 接近无敌的构建速度，让你在没有感知的情况下在启动的时候预先帮你把 `debounce` 所用到的所有内部模块全部打包成一个传统的 `js bundle`。
+这当然是不可接受的，于是尤师想了个折中的办法，正好利用 [Esbuild](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fevanw%2Fesbuild) 接近无敌的构建速度，让你在没有感知的情况下在启动的时候预先帮你把 `debounce` 所用到的所有内部模块全部打包成一个传统的 `js bundle`。
 
 `Esbuild` 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。
 
-![Esbuild 的速度](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0651f7ca5fda4440b77674d5bcfe49f5~tplv-k3u1fbpfcp-watermark.awebp)
-
-在 `httpServer.listen` 启动开发服务器之前，会先把这个函数劫持改写，放入依赖预构建的前置步骤，[Vite 启动服务器相关代码](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fvitejs%2Fvite%2Fblob%2Fmain%2Fpackages%2Fvite%2Fsrc%2Fnode%2Fserver%2Findex.ts)。
+在 `httpServer.listen` 启动开发服务器之前，会先把这个函数劫持改写，放入依赖预构建的前置步骤，[Vite 启动服务器源码](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/index.ts)。
 
 ```ts
 // server/index.ts
@@ -249,7 +260,6 @@ Vite 是一个充满魔力的现代化构建工具，尤老师也在各个平台
 也衷心祝福 Vite 的生态越来越好，共同迎接这个构建的新世代。
 
 不过到那个时候，我可能还会挺怀念从前 Webpack 怀念构建的时候，那几分钟一本正经的摸鱼时刻 😆。
-
 
 作者：ssh_晨曦时梦见兮
 链接：https://juejin.cn/post/6932367804108800007
