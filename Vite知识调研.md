@@ -193,7 +193,7 @@ function Home() {
 
    vite仓库中也有相关的issue，这种二次预构建的过程在正常的项目中也是会真实存在的，主要是为了处理项目中一些动态 import 的场景，当这种通过动态 import 的依赖多了之后，也会非常影响构建性能，这种场景下也可以用 **antfu ** 开发的 `vite-plugin-optimize-persist` 这个插件进行自动优化。
 
-  
+
 摘自：https://juejin.cn/post/7005731645911203877
 
 ### Vite同期竞品比较
@@ -204,17 +204,17 @@ function Home() {
 - [preactjs/wmr: 👩‍🚀 The tiny all-in-one development tool for modern web apps.](https://github.com/preactjs/wmr)
 - [Web Dev Server: Modern Web](https://modern-web.dev/docs/dev-server/overview/)
 
-### Snowpack
+**Snowpack **
 
 Snowpack 和 Vite 比较相似，也是基于 ESM 来实现开发环境模块加载，但是它的构建时却是交给用户自己选择，整体的打包体验显得有点支离破碎。
 
 而 Vite 直接整合了 Rollup，为用户提供了完善、开箱即用的解决方案，并且由于这些集成，也方便扩展更多的高级功能。
 
-### WMR
+**WMR **
 
 WMR 是为 Preact（React替代框架） 而生的，如果你在使用 Preact，可以优先考虑使用这个工具。
 
-### @web/dev-server
+**@web/dev-server**
 
 这个工具并未提供开箱即用的框架支持，也需要手动设置 Rollup 构建配置，不过这个项目里包含的很多工具也可以让 Vite 用户受益。
 
