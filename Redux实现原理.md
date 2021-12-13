@@ -4,7 +4,7 @@
 
 ## 状态管理器
 
-Redux是一个状态管理器，与react不强相关，只是react中使用的多。它也可以应用于其他框架。由React核心开发者Dan开源开发，优缺槽点很多，但这并不妨碍它是目前最流行的react状态管理解决方案。
+Redux是一个状态管理器，与react不强相关，只是react中使用的多。它也可以应用于其他框架。由React核心开发者Dan开源开发，缺点槽点很多，但这并不妨碍它是目前最流行的react状态管理解决方案。
 
 ### 简单的状态管理实现
 
@@ -397,5 +397,78 @@ store.dispatch({
 });
 ~~~
 
+到这里，我们就完成了对reducer的合并和拆分。同样state数据多了也会造成state树庞大，难维护，因此也需要进行拆分。
 
+**state 的拆分和合并**
 
+这里直接上代码
+
+~~~JS
+/* counter 自己的 state 和 reducer 写在一起*/
+let initState = {
+  count: 0
+}
+function counterReducer(state, action) {
+  /*注意：如果 state 没有初始值，那就给他初始值！！*/  
+  if (!state) {
+      state = initState;
+  }
+  switch (action.type) {
+    case 'INCREMENT':
+      return {
+        count: state.count + 1
+      }
+    default:    
+      return state;
+  }
+}
+~~~
+
+我们修改下 createStore 函数，增加一行 `dispatch({ type: Symbol() })`
+
+~~~Js
+const createStore = function (reducer, initState) {
+  let state = initState;
+  let listeners = [];
+
+  function subscribe(listener) {
+    listeners.push(listener);
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    for (let i = 0; i < listeners.length; i++) {
+      const listener = listeners[i];
+      listener();
+    }
+  }
+
+  function getState() {
+    return state;
+  }
+  /* 注意！！！只修改了这里，用一个不匹配任何计划的 type，来获取初始值 */
+  dispatch({ type: Symbol() })
+
+  return {
+    subscribe,
+    dispatch,
+    getState
+  }
+}
+~~~
+
+我们思考下这行可以带来什么效果？
+
+1. createStore 的时候，用一个不匹配任何 type 的 action，来触发 `state = reducer(state, action)`
+2. 因为 action.type 不匹配，每个子 reducer 都会进到 default 项，返回自己初始化的 state，这样就获得了初始化的 state 树了。
+
+你可以试试
+
+```js
+/*这里没有传 initState 哦 */
+const store = createStore(reducer);
+/*这里看看初始化的 state 是什么*/
+console.dir(store.getState());
+```
+
+到这里为止，我们已经实现了一个七七八八的 redux 啦！
