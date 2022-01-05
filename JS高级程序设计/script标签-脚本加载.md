@@ -1,7 +1,5 @@
 ![image-20220202223345035](/Users/jaydonyin/Library/Application Support/typora-user-images/image-20220202223345035.png)
 
-
-
 ## `<Script>`元素
 
 ### crossorigin 
