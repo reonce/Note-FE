@@ -20,7 +20,6 @@ let requestId = window.requestAnimationFrame(() => {
 });
 window.cancleAnimationFrame(requestID);
 ```
-
 #### 节流
 
 正常触发一个滚动事件，会执行很多次函数。
