@@ -4,7 +4,6 @@
 
 ### 背景设置
  
- 
 ```
 background-origin：   规定背景图片的定位区域。
 	☞ padding-box    背景图像相对内边距定位（默认值）
