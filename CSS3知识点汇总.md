@@ -18,7 +18,6 @@ background-clip：  	 规定背景的绘制区域。
 	☞ padding-box	 背景被裁切到内边距区域【将背景图片在内边距区域（包含内容区域）显示】
 	☞ content-box	 背景被裁切到内容区域【将背景图片在内容区域显示】
 	备注：
-  
 		默认背景的绘制区域是border-box。
 
 background-size：     规定背景图片的尺寸。
