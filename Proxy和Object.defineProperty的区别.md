@@ -8,6 +8,7 @@
 - Proxy返回的是一个新对象，我们可以只操作新的对象达到目的，而`Object.defineProperty`只能遍历对象属性直接修改， 性能角度要好;
 - Proxy做为新标准将受到浏览器产商重点持续的性能优化,也就是传说中的新标准的性能红利。
 
+
 **Object.defineProperty 的优势如下**
 
 - 兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平。
