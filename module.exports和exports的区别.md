@@ -6,8 +6,6 @@
 
 首先要牢记：**require()引入的是module.exports导出的对象，它输出一个对象的优先级最高**，这是区别module.exports和exports最重要的一点。
 
-
-
 1. exports只能改变module.exports的属性。例如：
 
    ```js
