@@ -12,7 +12,6 @@
 
 - 兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平。
 
-
 **Object.defineProperty 不足在于**：
 
 - `Object.defineProperty` 只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。
