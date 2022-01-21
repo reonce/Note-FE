@@ -10,6 +10,7 @@
 
 **Object.defineProperty 的优势如下**
 
+
 - 兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平。
 
 **Object.defineProperty 不足在于**：
