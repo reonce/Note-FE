@@ -276,7 +276,7 @@ function counterReducer(state, action) {
       }
     case 'DECREMENT':
       return {
-        ...state,
+        ...state，
         count: state.count - 1
       }
     default:
@@ -331,7 +331,7 @@ function combineReducers(reducers) {
 
   /*返回合并后的新的reducer函数，注意这里的传参实际上就是reducer函数的传参，而不是合并函数的*/
   return function combination(state = {}, action:{type: string, other}) {
-    /*生成的新的state, 命名为nwextState*/
+    /*生成的新的state, 命名为nextState*/
     const nextState = {}
 
     /*遍历执行所有的reducers，整合成为一个新的state*/
@@ -359,7 +359,7 @@ function combineReducers(reducers) {
 }
 ~~~
 
-基本原理就是，通过combination函数将所有的reducer整合到一起，再根据传入的state和action，找到整合完毕的Reducers当中对应的deducer，返回出实际需要更新的reducer。这一块比较绕，需要多看几遍。
+基本原理就是，通过combination函数将所有的reducer整合到一起，再根据传入的state和action，找到整合完毕的Reducers当中对应的reducer，返回出实际需要更新的reducer。这一块比较绕，需要多看几遍。
 
 那么我们尝试着使用一下combination函数
 
@@ -472,3 +472,4 @@ console.dir(store.getState());
 ```
 
 到这里为止，我们已经实现了一个七七八八的 redux 啦！
+
