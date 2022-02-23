@@ -165,9 +165,9 @@ fetch('/bar').then(response => {
    // No 'Access-Control-Allow-Origin' header is present on the requested resource.
    ~~~
 
-6. ##### 终端请求
+6. ##### 中断请求
 
-   FetchAPi请求通过`AbortController/AbortSignal`对终端请求。调用AbortController.abort()会终端所有网络传输。终端进行中的fetch（）请求会导致包含错误的拒绝。
+   FetchAPi请求通过`AbortController/AbortSignal`对中断请求。调用AbortController.abort()会终端所有网络传输。终端进行中的fetch（）请求会导致包含错误的拒绝。
 
    ```js
    let abortController = new AbortController();
