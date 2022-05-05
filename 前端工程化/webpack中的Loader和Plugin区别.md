@@ -6,3 +6,5 @@ Webpack将一切文件视为模块，但是webpack原生是只能解析js文件�
 
 ## Plugin
 Plugin:直译为"插件"，可以扩展webpack的功能，让webpack具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。例如`html-webpack-plugin`、`eslint-webpack-plugin`等等。简易实战：在代码中加入版权所属、写作日期，都可以用Plugin实现.
+
+
