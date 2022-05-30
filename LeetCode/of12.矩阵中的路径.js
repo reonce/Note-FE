@@ -4,6 +4,20 @@
  * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
  */
 
+/**
+ *
+ * @param {*} board
+ * @param {*} word
+ * @returns
+ */
+
+/**
+ * 条件一： 作为一个数组的索引，它不能超过边界，也不能为负数
+ * 条件二： 必须是没走过的路，记忆数组visited映射的坐标为false
+ * 解题思路： 定义四个方向，分别为上下左右，每次检查当前节点是否符合条件一和条件二，若符合，则查找下一个节点，若不符合，则查找下一个方向，
+ * 全走一遍，有符合的则返回true，跳出循环，如果没有则返回false。
+ */
+
 var exist = function (board, word) {
   const h = board.length,
     w = board[0].length;
@@ -19,6 +33,7 @@ var exist = function (board, word) {
   }
 
   /**检查节点是否符合下一个字符，若符合且没结束，继续查 */
+  /**i:横坐标， j：纵坐标， str：所查询字符串， k：匹配到第几个字符了 */
   const check = (i, j, str, k) => {
     if (board[i][j] !== str.charAt(k)) {
       return false;
