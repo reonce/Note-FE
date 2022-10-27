@@ -98,3 +98,6 @@ try {
 	console.error('变量未被定义');
 }
 ```
+
+（小黄书上  p63）补充： 试用 try..catch的组合更加通用。IIFE作为函数，可能会影响this、return、break、continue。
+
