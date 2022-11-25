@@ -5,4 +5,4 @@ set -e
 git pull
 git add -A
 git commit -m 'update'
-git push -f
+git push 
