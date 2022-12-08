@@ -3,3 +3,4 @@
 在这样的背景下，一些被称为 Bundleless (或者 Unbundled) 的构建工具应运而生，诸如 Snowpack、Vite，其中 Vite 最近在社区的呼声越来越高，GitHub 上的 star 30k+，甚至已经超过 vue3 仓库的 star 数(目前 24.1k)，可见其影响力之大。
 
 https://juejin.cn/post/7005731645911203877
+
