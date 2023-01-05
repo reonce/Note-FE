@@ -1,5 +1,3 @@
-# DOCTYPE的作用，标准模式怪异模式区别
-
 # **DOCTYPE的作用，标准模式怪异模式区别**
 
 <!DCOTYPE html>
