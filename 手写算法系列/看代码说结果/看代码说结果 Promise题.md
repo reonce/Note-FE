@@ -1,3 +1,5 @@
+# 看代码说结果 Promise题
+
 ~~~js
 const p = new Promise((resolve,reject) => {
     console.log(0)
