@@ -23,7 +23,7 @@
 
 比如我输入:
 ```
-http://sanyuan.com?q=<script>alert("你完蛋了")</script>
+http://xxx.com?q=<script>alert("你完蛋了")</script>
 ```
 这样，在服务器端会拿到`q`参数,然后将内容返回给浏览器端，浏览器将这些内容作为HTML的一部分解析，发现是一个脚本，直接执行，这样就被攻击了。
 
