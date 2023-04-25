@@ -20,6 +20,8 @@
 - [多异步任务保持 3 个并发](./JavaScript/手写系列/多异步任务保持3个并发.md)
 - [ES5 实现 let 与 const 的 polyfill](./JavaScript/手写系列/ES5实现let与const.md)
 - [实现一个可链式调用、可等待执行的类](./JavaScript/手写系列/实现一个可链式调用、可等待执行的类.md)
+- [函数柯力化，高阶函数 pipe 的实现](./JavaScript/手写系列/函数柯里化.md)
+- [扁平数据转为树结构](./JavaScript/手写系列/扁平数据转为树结构.md)
 
 ### CSS
 
@@ -31,8 +33,8 @@
 
 - [Redux 实现原理](./框架&库/Redux实现原理.md)
 - [React 技术揭秘](https://react.iamkasong.com/) 作者卡颂，在线免费读
-- [react-use](https://streamich.github.io/react-use/?path=/story/components-usekey--demo) 最推荐的 `hook` 库，官网 `demo` 做的太棒了，结合源码阅读和调试都十分便利，需要挑着看，很多也只是实现 `JavaScript `或 `DOM `的 `API`
-- **React 设计原理** 推荐卡颂的新书 《React 设计原理》 （摒弃国人书籍偏见，他写的真的很好）
+- [react-use](https://streamich.github.io/react-use/?path=/story/components-usekey--demo) 最推荐的 `hook` 库，官网 `demo` 做的太棒了，结合源码阅读和调试很便利，需要挑着读，很多也只是实现 `JavaScript `或 `DOM `的 `API`
+- **React 设计原理** 推荐卡颂的新书 《React 设计原理》 （尽管书中有一些他之前就开源出来的内容，不过总体值得一读）
 
 ### 性能优化
 
@@ -56,8 +58,8 @@
 
 ### 笔者读过且推荐的一些书籍
 
-- 《JavaScript 高级程序设计 第四版》 红宝书，前端圣经
+- 《JavaScript 高级程序设计 第四版》 红宝书，前端圣经，必读系列。
+- [《ES6 标准入门》](https://es6.ruanyifeng.com/) 阮老师的开源书籍，个人觉得必读。相较于其他书籍，阮老师的文笔更容易使人理解，如果刚入门可以先看它的前导书籍---网道的 [《JavaScript 教程》](https://wangdoc.com/javascript/), 同开源。这两本书同样对笔者的帮助很大，强推。
 - 《你不知道的 JavaScript》 上中下三册，经常看到有人只推荐下册，这里我读完之后觉得三册都有必要读，并且下册的内容很多都引用了上中册的内容，不要人云亦云，有时间建议都读
 - 《JavaScript 语言精粹》 很薄，我是一周读完的，内容有些比较老的内容，能帮助理解 `JavaScript` 的发展，提高对 `JavaScript` 语言的兴趣
-- 《JavaScript 权威指南》犀牛书，其实笔者读这本比较少，有点像字典，适合碎片时间翻阅
 - 《React 设计原理》 笔者才开始读，目录排版内容满足了我对 React 想要了解的一切，后续读完来补充评价
