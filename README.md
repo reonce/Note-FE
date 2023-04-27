@@ -22,6 +22,8 @@
 - [实现一个可链式调用、可等待执行的类](./JavaScript/手写系列/实现一个可链式调用、可等待执行的类.md)
 - [函数柯力化，高阶函数 pipe 的实现](./JavaScript/手写系列/函数柯里化.md)
 - [扁平数据转为树结构](./JavaScript/手写系列/扁平数据转为树结构.md)
+- [防抖与节流](./JavaScript/手写系列/防抖与节流.md)
+- [Promise 原理](./JavaScript/手写系列/promise原理.md)
 
 ### CSS
 

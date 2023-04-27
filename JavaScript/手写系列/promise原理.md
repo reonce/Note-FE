@@ -1,3 +1,5 @@
+# 手写 Promise
+
 ```js
 // 定义三种状态
 const REJECTED = "REJECTED";
