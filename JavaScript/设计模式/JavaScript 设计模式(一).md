@@ -1,4 +1,3 @@
-
 # 理解 JavaScript 设计模式(一)
 
 ## 前言
@@ -224,30 +223,130 @@ class Singleton {
 new Singleton("kevin", 18) === new Singleton("bob", 21); // true
 ```
 
+
 ### 策略模式
 
 > **策略模式定义了一系列算法，将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响使用算法的人。 用于解决有多种相似算法且数量庞大时，使用 **`if...else` 会复杂和难以维护，它的有点是算法可以自由切换，避免多重 `if...else` 判断，并具有良好的扩展性
 
+**假定有一个抽奖函数，根据抽奖等级和投入资金，**
+
 ```
 function lottery(level, money) {
+  const result = Math.random();
+    
   if (level === "A") {
-    if (math.random() < 0.05) {
+    if (result < 0.05) {
       return money * 100;
     }
-    if (math.random() < 0.1) {
+    if (result < 0.1) {
       return money * 30;
     }
   }
 
   if (level === "B") {
-    if (math.random() < 0.1) {
+    if (result < 0.1) {
       return money * 20;
     }
-    if (math.random() < 0.3) {
+    if (result < 0.3) {
       return money * 5;
     }
   }
 
   return 0;
 }
+
+```
+
+```
+let strategy = {
+  A: (money) => {
+    const result = Math.random();
+    if (result < 0.05) {
+      return money * 20;
+    }
+    if (result < 0.1) {
+      return money * 10;
+    }
+    return 0;
+  },
+
+  B: (money) => {
+    const result = Math.random();
+    if (result < 0.1) {
+      return money * 5;
+    }
+    if (result < 0.3) {
+      return money * 2;
+    }
+    return 0;
+  },
+};
+
+function lottery(level, money) {
+  return strategy[level](money);
+}
+
+lottery("A", 15)
+```
+
+### 代理模式
+
+> **一个对象通过某种代理方式来控制对另一个对象的访问**
+
+**假设现在需要雇佣装修工人，一般来说是要和装修公司去谈的，与装修公司谈妥价格后，工人才会前往工作，这里装修公司扮演的角色就是 ****“代理”**
+
+```
+class Worker {
+  play() {
+    console.log("合作愉快");
+  }
+}
+
+class WorkerProxy {
+  constructor() {
+    this.superStar = new Star();
+  }
+
+  talk(price) {
+    if (price >= 10000) {
+      this.superStar.play();
+      return;
+    }
+    console.error("干不了，得加钱");
+  }
+}
+
+const company = new Worker();
+company.talk(5000)
+```
+
+```
+// Proxy 语法
+const worker = {
+  name: 'bob',
+  salary: 8000,
+};
+
+let companyProxy = new Proxy(worker, {
+  get(target, key) {
+    if (key === "salary") {
+      return 10000;
+    }
+    return target[key];
+  },
+
+  set(target, key, value) {
+    if (key === "salary") {
+      console.log('商量价格')
+      if(value >= 10000) {
+          console.log('可以合作')
+      } else {
+          console.error('干不了，得加钱')
+      }
+    }
+  },
+});
+
+companyProxy.salary // 10000
+companyProxy.salary = 9000
 ```
