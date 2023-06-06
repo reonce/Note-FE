@@ -1,67 +1,68 @@
+
 # 理解 JavaScript 设计模式(一)
 
 ## 前言
 
-​	本篇文章用于帮助理解 JavaScript 设计模式，内容上会由易到难，举例子的原则是尽可能简单。本文比较适合对设计模式概念不深的朋友阅读，对于有一定开发经验但不了解过设计模式的朋友，读本文过程中你会发现，原来我早就已经用过这个设计模式了。让我们开始吧~
+**	**本篇文章用于帮助理解 JavaScript 设计模式，内容上会由易到难，举例子的原则是尽可能简单。本文比较适合对设计模式概念不深的朋友阅读，对于有一定开发经验但不了解过设计模式的朋友，读本文过程中你会发现，原来我早就已经用过这个设计模式了。让我们开始吧~
 
 ### 概念
 
-* 思想： 封装变化
-* 定义： 在 **面向对象 **软件设计过程中针对 **特定问题** 的简洁而优雅的解决方案
-* 遵循原则： 将变与不变分离，保证“变部分”的 **灵活** 的同时，确保“不变部分”的 **稳定**
+* **思想： 封装变化**
+* **定义： 在 ****面向对象 **软件设计过程中针对 **特定问题** 的简洁而优雅的解决方案
+* **遵循原则： 将变与不变分离，保证“变部分”的 ****灵活** 的同时，确保“不变部分”的 **稳定**
 
 ### 作用
 
-> 在软件设计中，模式是经过大量实际项目验证的优秀的解决方案。熟悉这些模式的程序员，对某些模式的理解也许成为了条件反射。当合适的场景出现的时，他们可以很快地找到某种模式作为解决方案     ---JavaScript 设计模式与开发实践
+> **在软件设计中，模式是经过大量实际项目验证的优秀的解决方案。熟悉这些模式的程序员，对某些模式的理解也许成为了条件反射。当合适的场景出现的时，他们可以很快地找到某种模式作为解决方案     ---JavaScript 设计模式与开发实践**
 
-​	设计模式可以帮助让人们写出 **可复用** 和 **可维护性** 更高的程序。假设有一个空房间，不断的往里面放东西很容易，但是时间久了会发现很难从这个房子里找到想要的东西，要调整东西的位置也不容易。所以在这个房间里放几个柜子是个更好的选择，虽然柜子会增加我们的成本，但它可以在维护阶段带来好处。使用柜子的方案，也许就是一种“模式”，要注意一点，如果你的东西不多，在房间里查找也很便利，就不建议使用“柜子”了，这个观点的探讨我们接下来会聊到，即 **适用性**
+**	**设计模式可以帮助让人们写出 **可复用** 和 **可维护性** 更高的程序。假设有一个空房间，不断的往里面放东西很容易，但是时间久了会发现很难从这个房子里找到想要的东西，要调整东西的位置也不容易。所以在这个房间里放几个柜子是个更好的选择，虽然柜子会增加我们的成本，但它可以在维护阶段带来好处。使用柜子的方案，也许就是一种“模式”，要注意一点，如果你的东西不多，在房间里查找也很便利，就不建议使用“柜子”了，这个观点的探讨我们接下来会聊到，即 **适用性**
 
 ### 适用性
 
-​	设计模式经常会被认为是夸夸奇谈的东西。有些人认为它并没有多大用途，用普通的方法就能解决问题，使用设计模式反而会增加代码的**复杂度**，阅读起来会更吃力。这种看法笔者也是认同的，对于一些使用不当的设计模式，后续的维护可能会变得很糟，反而使用普通的解决方式会让代码逻辑分明清晰
+**	**设计模式经常会被认为是夸夸奇谈的东西。有些人认为它并没有多大用途，用普通的方法就能解决问题，使用设计模式反而会增加代码的**复杂度**，阅读起来会更吃力。这种看法笔者也是认同的，对于一些使用不当的设计模式，后续的维护可能会变得很糟，反而使用普通的解决方式会让代码逻辑分明清晰
 
-​	设计模式被人**误解 **为没用的一个重要原因是人们对它的误用和滥用。特别是初学者刚学会使用一个模式时，恨不得所有的代码都用它来实现。**锤子理论**在这里体现的非常明显： 当我们有了一把锤子，看什么都是钉子
+**	**设计模式被人**误解 **为没用的一个重要原因是人们对它的误用和滥用。特别是初学者刚学会使用一个模式时，恨不得所有的代码都用它来实现。**锤子理论**在这里体现的非常明显： 当我们有了一把锤子，看什么都是钉子
 
-​	可惜的是，我们每个人只能控制自己是否选择使用设计模式，总会遇到其他人使用了恰当或不那么合适的设计模式方案，因此为了我们的开发体验，笔者认为不但要学，而且还要深入的去理解设计模式，对于个人代码水平的增加倒是次要，重要的是能够更顺畅读懂其他人的设计模式代码...
+**	**可惜的是，我们每个人只能控制自己是否选择使用设计模式，总会遇到其他人使用了恰当或不那么合适的设计模式方案，因此为了我们的开发体验，笔者认为不但要学，而且还要深入的去理解设计模式，对于个人代码水平的增加倒是次要，重要的是能够更顺畅读懂其他人的设计模式代码...
 
 ## 构造器模式与原型模式
 
-对于重复的对象声明，推荐使用**构造器模式**，举个例子：
+**对于重复的对象声明，推荐使用****构造器模式**，举个例子：
 
-~~~js
+```
 const employeel = {
-    name: 'kevin',
-    age: 6
+    name: 'kevin',
+    age: 6
 }
 
 const employee2 = {
-    name: 'bob',
-    age: 18
+    name: 'bob',
+    age: 18
 }
 ...
-~~~
+```
 
-如果数据量的更多，代码就会变得重复和臃肿，我们使用一个构造函数：
+**如果数据量的更多，代码就会变得重复和臃肿，我们使用一个构造函数：**
 
-~~~js
+```
 function Employeel (name, age) {
-    this.name = name;
-    this.age = age;
+    this.name = name;
+    this.age = age;
 }
 
 const employeel = new Employeel('kevin', 6);
 const employee2 = new Employeel('bob', 18);
-~~~
+```
 
-这里就已经是一个简单的构造器模式了，如果这个构造函数里有个方法：
+**这里就已经是一个简单的构造器模式了，如果这个构造函数里有个方法：**
 
-~~~js
+```
 function Employeel (name, age) {
-    this.name = name;
-    this.age = age;
-    this.say = function() {
-        console.log(`姓名： ${this.name} --- 年龄：${this.age}`)
-    }
+    this.name = name;
+    this.age = age;
+    this.say = function() {
+        console.log(`姓名： ${this.name} --- 年龄：${this.age}`)
+    }
 }
 
 const employeel = new Employeel('kevin', 6);
@@ -69,18 +70,18 @@ const employee2 = new Employeel('bob', 18);
 
 employeel.say();
 employee2.say();
-~~~
+```
 
-执行是没有问题的，但是 `say()` 函数实际上被创建了多次， 有没有什么方式可以让他们共用这个方法，答案就是原型模式
+**执行是没有问题的，但是 **`say()` 函数实际上被创建了多次， 有没有什么方式可以让他们共用这个方法，答案就是原型模式
 
-~~~js
+```
 function Employeel (name, age) {
-    this.name = name;
-    this.age = age;
+    this.name = name;
+    this.age = age;
 }
 
 Employeel.prototype.say = function() {
-    console.log(`姓名： ${this.name} --- 年龄：${this.age}`)
+    console.log(`姓名： ${this.name} --- 年龄：${this.age}`)
 }
 
 const employeel = new Employeel('kevin', 6);
@@ -88,20 +89,20 @@ const employee2 = new Employeel('bob', 18);
 
 employeel.say();
 employee2.say();
-~~~
+```
 
-ES6以后，JavaScript有了 **“类”** 的概念，它兼顾了构造器模式和原型模式
+**ES6以后，JavaScript有了 ****“类”** 的概念，它兼顾了构造器模式和原型模式
 
-~~~js
+```
 class Employeel{
-    constructor(name, age) {
-      this.name = name;
-      this.age = age;
-    }
-    
-    say() {
-       console.log(`姓名： ${this.name} --- 年龄：${this.age}`)
-    }
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    
+    say() {
+       console.log(`姓名： ${this.name} --- 年龄：${this.age}`)
+    }
 }
 
 const employeel = new Employeel('kevin', 6);
@@ -109,48 +110,144 @@ const employee2 = new Employeel('bob', 18);
 
 employeel.say();
 employee2.say();
-~~~
+```
 
 ### 工厂模式
 
 #### 简单工厂模式
 
-假定现在有一个菜单需求，已经一个标识，根据这个标识返回不同的菜单。
+**假定现在有一个菜单需求，已经一个标识，根据这个标识返回不同的菜单。**
 
-正常存放静态变量的场景可能是：
+**正常存放静态变量的场景可能是：**
 
-~~~js
+```
 
 const menuInfos = {
-    menu1: [...],
-    menu2: [...],
-    menu3: [...],
+    menu1: [...],
+    menu2: [...],
+    menu3: [...],
 }
-       
+       
 ...
 switch(flag) {
-    case 'flag1':
-    return menuInfos.menu1;
-    ...
-    default:
-    throw new Error('xxx')
+    case 'flag1':
+    return menuInfos.menu1;
+    ...
+    default:
+    throw new Error('xxx')
 }
-~~~
+```
 
-可以实现功能，但是多余的变量声明造成了一些内存的浪费
+**可以实现功能，但是多余的变量声明造成了一些内存的浪费**
 
-~~~js
+```
 function menuFactory (flag) {
-    switch(flag) {
-    case 'flag1':
-    return menuInfos.menu1;
-    ...
-    default:
-    throw new Error('xxx')
+    switch(flag) {
+    case 'flag1':
+    return menuInfos.menu1;
+    ...
+    default:
+    throw new Error('xxx')
  }
 }
-~~~
+```
 
-通过一个参数，可以获取到所需要的对象，这种思想就叫做 **简单工厂模式**，优点在于只需要正确的参数就可以获得需要的对象，不需要知道具体细节。缺陷是每增加新的构造函数需要修改判断逻辑代码，当我们需要的对象不是上面3个，而是更多时，这个函数会变成很庞大的一个函数，难以维护，这时候可以考虑 **抽象工厂模式**
+**通过一个参数，可以获取到所需要的对象，这种思想就叫做 ****简单工厂模式**，优点在于只需要正确的参数就可以获得需要的对象，不需要知道具体细节。缺陷是每增加新的构造函数需要修改判断逻辑代码，当我们需要的对象不是上面3个，而是更多时，这个函数会变成很庞大的一个函数，难以维护，这时候可以考虑 **抽象工厂模式**
 
 #### 抽象工厂模式
+
+> **抽象工厂模式不直接生成实例，而是用于对产品类簇的创建**
+
+```
+class User {
+  constructor(name, role) {
+    this.name = name;
+    this.role = role;
+  }
+
+  welcome() {
+    console.log("welcome back", this.name);
+  }
+
+  dataShow() {
+    console.log("抽象工厂的dataShow方法执行了");
+  }
+}
+
+class BotUser extends User {
+  constructor(name) {
+    super(name, "bot");
+  }
+
+  dataShow() {
+    console.log(`my name is ${this.name}, i am a ${this.role}`);
+  }
+}
+
+const kevin = new KevinUser("kevin");
+kevin.dataShow();
+```
+
+### 单例模式
+
+```
+function User(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+var Singleton = (function() {
+    var instance
+    
+    return funciton(name, age) {
+        if(!instance) {
+            instance = new User(name, age)
+        }
+        return instanceq
+    }
+})()
+```
+
+```
+class Singleton {
+  constructor(name, age) {
+    if (!Singleton.instance) {
+      this.name = name;
+      this.age = age;
+      Singleton.instance = this;
+    }
+
+    return Singleton.instance;
+  }
+}
+
+new Singleton("kevin", 18) === new Singleton("bob", 21); // true
+```
+
+### 策略模式
+
+> **策略模式定义了一系列算法，将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响使用算法的人。 用于解决有多种相似算法且数量庞大时，使用 **`if...else` 会复杂和难以维护，它的有点是算法可以自由切换，避免多重 `if...else` 判断，并具有良好的扩展性
+
+```
+function lottery(level, money) {
+  if (level === "A") {
+    if (math.random() < 0.05) {
+      return money * 100;
+    }
+    if (math.random() < 0.1) {
+      return money * 30;
+    }
+  }
+
+  if (level === "B") {
+    if (math.random() < 0.1) {
+      return money * 20;
+    }
+    if (math.random() < 0.3) {
+      return money * 5;
+    }
+  }
+
+  return 0;
+}
+```
