@@ -24,8 +24,7 @@
 - [扁平数据转为树结构](./JavaScript/手写系列/扁平数据转为树结构.md)
 - [防抖与节流](./JavaScript/手写系列/防抖与节流.md)
 - [Promise 原理](./JavaScript/手写系列/promise原理.md)
-- [利用 generator 实现async await](./JavaScript/手写系列/利用 generator 实现async await.md)
-- 
+- [利用generator实现async_await](./JavaScript/手写系列/利用generator实现async_await.md)
 ### CSS
 
 - [水平垂直居中](./CSS/水平垂直居中.md)
