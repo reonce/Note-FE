@@ -10,8 +10,8 @@
 
 #### 基础系列：
 
-- [红宝书--一书读懂基础不愁](./JavaScript/红宝书)
-- [红宝书--精读笔记（包含读书随笔）](https://github.com/reonce/notes-and-essays/issues)
+- [红宝书--读书总结(上)](./JavaScript/红宝书)
+- [红宝书--读书总结 (下)（含随笔）](https://github.com/reonce/notes-and-essays/issues)
 
 #### 手写系列：
 
@@ -25,17 +25,21 @@
 - [防抖与节流](./JavaScript/手写系列/防抖与节流.md)
 - [Promise 原理](./JavaScript/手写系列/promise原理.md)
 - [利用generator实现async_await](./JavaScript/手写系列/利用generator实现async_await.md)
+
 ### CSS
 
+- [CSS基础知识](./CSS/CSS基础知识.md)
 - [水平垂直居中](./CSS/水平垂直居中.md)
 - [选择器优先级](./CSS/选择器优先级.md)
 - [BFC](./CSS/BFC.md)
+- [伪类选择器](./CSS/水平垂直居中.md)
+- [渐进式增强和优雅降级](./CSS/渐进式增强和优雅降级.md)
 
 ### 框架&库
 
 - [Redux 实现原理](./框架&库/Redux实现原理.md)
-- [React 技术揭秘](https://react.iamkasong.com/) 作者卡颂，在线免费读。他的新书《React 设计原理》，笔者有读，感受是理解吃力，不太推荐。
-- [react-use](https://streamich.github.io/react-use/?path=/story/components-usekey--demo) 最推荐的 `hook` 库，官网 `demo` 做的太棒了，结合源码阅读和调试很便利，需要挑着读，很多也只是实现 `JavaScript `或 `DOM `的 `API`
+- [React 技术揭秘](https://react.iamkasong.com/) 作者卡颂，在线免费读
+- [react-use](https://streamich.github.io/react-use/?path=/story/components-usekey--demo)  `react hook` 库，官网 `demo` 做的很棒，源码阅读和调试二合一，可以帮助理解设计hook
 
 ### 性能优化
 
