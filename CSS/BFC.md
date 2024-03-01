@@ -23,6 +23,8 @@
 * display: table-cell
 * display: flex
 
+* overflow: xxx (xxx 为除 visible 以外的属性) 的块元素
+
 ## BFC的规则
 
 * `BFC`就是一个块级元素，块级元素会在垂直方向一个接一个的排列
