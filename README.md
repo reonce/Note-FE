@@ -10,8 +10,8 @@
 
 #### 基础系列：
 
-- [红宝书--读书总结(上)](./JavaScript/红宝书)
-- [红宝书--读书总结 (下)（含随笔）](https://github.com/reonce/notes-and-essays/issues)
+- [红宝书--读书笔记（第一遍）](./JavaScript/红宝书)
+- [红宝书--读书总结（第二遍，含随笔）](https://github.com/reonce/notes-and-essays/issues)
 
 #### 手写系列：
 
