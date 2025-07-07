@@ -68,3 +68,4 @@
 - [《ES6 标准入门》](https://es6.ruanyifeng.com/) 阮老师的开源书籍，个人觉得必读。相较于其他书籍，阮老师的文笔更容易使人理解，如果刚入门可以先看它的前导书籍---网道的 [《JavaScript 教程》](https://wangdoc.com/javascript/), 同开源。这两本书同样对笔者的帮助很大，强推。
 - 《你不知道的 JavaScript》 上中下三册，经常看到有人只推荐下册，这里我读完之后觉得三册都有必要读，并且下册的内容很多都引用了上中册的内容，不要人云亦云，有时间建议都读
 - 《JavaScript 语言精粹》 很薄，我是一周读完的，内容有些比较老的内容，能帮助理解 `JavaScript` 的发展，提高对 `JavaScript` 语言的兴趣
+- 《深入设计模式》 https://refactoringguru.cn/
